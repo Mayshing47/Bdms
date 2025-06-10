@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>BBDMS - Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+
+  <!-- Fonts and icons -->
+  <script src="{% static 'assets/js/plugin/webfont/webfont.min.js' %}"></script>
+  <script>
+    WebFont.load({
+      google: { families: ["Public Sans:300,400,500,600,700"] },
+      custom: {
+        families: [
+          "Font Awesome 5 Solid",
+          "Font Awesome 5 Regular",
+          "Font Awesome 5 Brands",
+          "simple-line-icons",
+        ],
+        urls: ["{% static 'assets/css/fonts.min.css' %}"],
+      },
+      active: function () {
+        sessionStorage.fonts = true;
+      },
+    });
+  </script>
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/plugins.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/kaiadmin.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/demo.css' %}" />
+
+  <!-- Custom CSS for Centering -->
+  <style>
+    html, body {
+      height: 100%; /* Ensure the body takes full height */
+      margin: 0; /* Remove default margin */
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f8f9fa; /* Light background for better contrast */
+    }
+    .wrapper {
+      width: 100%;
+      max-width: 500px; /* Limit the width of the card */
+    }
+    .card {
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    }
+    .card-header {
+      background-color: #007bff; /* Primary color for header */
+      color: white;
+      border-radius: 10px 10px 0 0; /* Rounded corners for header */
+    }
+    .card-body {
+      padding: 2rem;
+    }
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    .btn-light {
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+    }
+    .btn-light:hover {
+      background-color: #e9ecef;
+    }
+    .text-white {
+      color: white !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="card card-pricing card-pricing-focus card-primary">
+      <div class="card-header text-center">
+        <h4 class="card-title">Login</h4>
+        <div class="card-price">
+          Access to our dashboard
+        </div>
+      </div>
+      <div class="card-body">
+        <!-- Display Messages -->
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert" style="color: {% if message.tags == 'error' %}red{% else %}inherit{% endif %};">
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {% endfor %}
+        {% endif %}
+
+        <!-- Login Form -->
+        <form action="{% url 'doLogin' %}" method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Your Username" name="username" required>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" name="password" required>
+          </div>
+          <div class="form-group text-center">
+            <button class="btn btn-light w-100" type="submit">Login</button>
+          </div>
+        </form>
+
+        <!-- Additional Links -->
+        <div class="form-group text-center">
+          <a href="{% url 'index' %}" class="text-white"><i class="fa fa-home" aria-hidden="true"></i> Home Page</a>
+        </div>
+        <div class="form-group text-center">
+          <a href="{% url 'donorsignup' %}" class="text-white"><i class="fa fa-sign-in" aria-hidden="true"></i> Donor Signup</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Core JS Files -->
+  <script src="{% static 'assets/js/core/jquery-3.7.1.min.js' %}"></script>
+  <script src="{% static 'assets/js/core/popper.min.js' %}"></script>
+  <script src="{% static 'assets/js/core/bootstrap.min.js' %}"></script>
+
+  <!-- Plugins -->
+  <script src="{% static 'assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugin/chart.js/chart.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugin/chart-circle/circles.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugin/datatables/datatables.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugin/jsvectormap/jsvectormap.min.js' %}"></script>
+  <script src="{% static 'assets/js/plugin/jsvectormap/world.js' %}"></script>
+  <script src="{% static 'assets/js/plugin/sweetalert/sweetalert.min.js' %}"></script>
+
+  <!-- Kaiadmin JS -->
+  <script src="{% static 'assets/js/kaiadmin.min.js' %}"></script>
+  <script src="{% static 'assets/js/setting-demo.js' %}"></script>
+</body>
+</html>
