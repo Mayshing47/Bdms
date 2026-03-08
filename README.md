@@ -37,7 +37,17 @@ cd bloodbanksystem
 python manage.py runserver
 
 
+Now click the URL http://127.0.0.1:8000 and the Project will run
+Login Details
+*************admin************
+Username:  admin
+Password: Test@123
+*************Donor************
+Username:  test123
+Password: Test@123 OR Register new donor
 
+For More Detail visit:
+https://phpgurukul.com/python-projects-free-download/
 
 
 
